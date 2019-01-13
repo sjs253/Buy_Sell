@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+<div >
+<%= image_tag(@commodity.image, style:'width:25%') %>
+</div>
+<br>
+<h2>
+<p>
+    Hello <strong><%= current_user.email %></strong>, are you sure you want to buy the product from <strong><%= @commodity.email %></strong> ??
+</p>
+</h2>
+<p>
+The product details are mentioned below. The price of the product is <strong><%= @commodity.price %> Rs</strong> only!!
+</p>
+
+<p>
+On clciking the <strong>YES</strong> button, money will be deducted from your wallet and will be transfered to <strong><%= @commodity.email %></strong>
+</p>
+<p>
+  <strong>Item name:</strong>
+  <%= @commodity.item_name %>
+</p>
+
+<p>
+  <strong>Item description:</strong>
+  <%= @commodity.item_description %>
+</p>
+
+
+<br>
+<%= link_to "Yes", yes_commodities_path(@commodity), :method => :get, :class => "btn btn-success" %>
+<%= link_to 'Back', commodities_path, :class =>"btn btn-light"%>

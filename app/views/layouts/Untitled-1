@@ -1,0 +1,21 @@
+1. Automated the generation of model,controller,views by
+        rails generate scaffold commodity item_name:string item_description:text price:integer
+2. Route for the "root" page is added as 
+        root "commodities#index"
+    this renders the index page of our app
+3. Added the gem "devise" for adding the authentication part.
+        rails generate devise:install   -> this this makes two files for devise namely devise.rb and devise.en.yml
+4.      rails generate devise User  -> this creates a migration file,model,alobg with the respective routes.
+5. The file app/views/layouts/application.html.erb is edited
+        There is an if,else statement which helps us to display the links to logout,login etc
+6. Now we associate each todo list with it's user id
+        rails generate migration add_column_user_id_to_app user_id:integer
+   this adds a column to my database
+   Now whenever new complaint is filed... it is being linked with the user by
+        @complaint_management.user_id = current_user.id
+   Also for showing all the complaints of a user on the index page we use
+        @complaint_management= ComplaintManagement.where(:user_id => current_user.id)
+7.Also in the controller section we have to handle
+        A user can have many complaints
+        and a particular complaint belongs to a user
+        also we add code so that it validates the presence of the user (basically user login)

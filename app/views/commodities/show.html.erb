@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item name:</strong>
+  <%= @commodity.item_name %>
+</p>
+
+<p>
+  <strong>Item description:</strong>
+  <%= @commodity.item_description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @commodity.price %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @commodity.contact %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @commodity.email %>
+</p>
+
+<div >
+<%= image_tag(@commodity.image, style:'width:25%') %>
+</div>
+
+<br>
+
+<% if @commodity.email != current_user.email %>
+    <%= link_to "Buy", buy_commodities_path(@commodity), :method => :get, :class => "btn btn-success" %>
+<% end %>
+
+<%= link_to 'Back', commodities_path, :class =>"btn btn-light"%>
+<% if @commodity.email == current_user.email %>
+     <%= link_to 'Edit', edit_commodity_path(@commodity), :class =>"btn btn-warning"%>
+<% end %>
